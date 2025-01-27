@@ -1,0 +1,78 @@
+/* Main container styling */
+.detailContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Product image container */
+.productImage {
+  flex: 1;
+  max-width: 400px;
+  text-align: center;
+}
+
+.productImage img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Product information container */
+.productInfo {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.productInfo .title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.productInfo .price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.productInfo .raiting {
+  font-size: 16px;
+  color: #ffa41b;
+}
+
+/* Description styling */
+.description {
+  flex: 1 100%;
+  margin-top: 20px;
+}
+
+.description p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .detailContainer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .productImage img {
+    max-width: 100%;
+  }
+}

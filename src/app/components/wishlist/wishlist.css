@@ -1,0 +1,74 @@
+.cards {
+  padding-bottom: 30px;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-evenly;
+
+  .card {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 10px;
+    background-color: azure;
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      color: rgb(54, 88, 54);
+    }
+
+    span {
+      h3 {
+        display: inline-block;
+        color: #bb3a33;
+      }
+    }
+
+    .image {
+      border: none;
+      background-color: white;
+
+      img {
+        width: 100%;
+        object-fit: contain;
+        height: 150px;
+      }
+    }
+  }
+}
+.icons {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  .basket {
+    color: green;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
+  .remove {
+    color: red;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
+}

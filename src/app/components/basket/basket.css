@@ -1,0 +1,79 @@
+.basketSection {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.cards {
+  padding-bottom: 30px;
+  width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .card {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 10px;
+    background-color: #fff;
+    margin: 0 auto;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      color: rgb(54, 88, 54);
+    }
+
+    span {
+      h3 {
+        display: inline-block;
+        color: #bb3a33;
+      }
+    }
+
+    .image {
+      border: none;
+      background-color: white;
+
+      img {
+        width: 100%;
+        object-fit: contain;
+        height: 150px;
+      }
+    }
+  }
+}
+.icons {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  .heart {
+    color: red;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
+  .remove {
+    color: red;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
+}

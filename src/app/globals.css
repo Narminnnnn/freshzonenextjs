@@ -1,0 +1,6 @@
+body{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: 100vh !important;
+}
