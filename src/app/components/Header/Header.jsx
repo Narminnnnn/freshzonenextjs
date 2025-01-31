@@ -20,9 +20,9 @@ const Header = () => {
 
         <nav>
           <ul>
-            <li className="home">
+           <Link href={"/"}>  <li className="home">
               <a href="">Home</a>
-            </li>
+            </li></Link>
             <li>
               <a href="">About</a>
             </li>
@@ -41,10 +41,10 @@ const Header = () => {
           <IoMenu />
         </div>
         <div className="icns">
-          <Link href={"/components/wishlist"}>
+          <Link href={"/wishlist"}>
             <FaRegHeart className="fa" />
           </Link>
-          <Link href={"/components/basket"}>
+          <Link href={"/basket"}>
             <SlBasket className="ri" />
           </Link>
         </div>

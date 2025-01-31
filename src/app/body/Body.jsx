@@ -6,6 +6,8 @@ import Link from "next/link";
 import { SlBasket } from "react-icons/sl";
 import { FaRegHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { IoSearchCircle } from "react-icons/io5";
+
 
 const Body = () => {
   const [data, setData] = useState([]);
@@ -14,12 +16,19 @@ const Body = () => {
   const [wish, setWish] = useState([]);
   const [basket, setBasket] = useState([]);
 
+  // Placeholder üçün animasiya
+  const words = ["Coat", "TV", "Card", "Ring", "Earering","T-shirt"];
+  const [placeholder, setPlaceholder] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const carBasket = (product) => {
     const addtobasket = basket.some((item) => item.id === product.id);
     if (!addtobasket) {
       const updatebasket = [...basket, product];
       localStorage.setItem("basket", JSON.stringify(updatebasket));
-      setBasket(updatebasket); 
+      setBasket(updatebasket);
       alert(`${product.title} baskete əlavə olundu`);
     } else {
       alert(`${product.title} artıq basketdə mövcuddur`);
@@ -51,14 +60,44 @@ const Body = () => {
       }
     };
 
+    // LocalStorage-dan məlumatları götür
     const result = JSON.parse(localStorage.getItem("basket")) || [];
     setBasket(result);
 
     getApi();
   }, []);
 
-  if (loading) return <h3>Məlumatlar yüklənir</h3>;
-  if (error) return <h3>Xəta baş verdi</h3>;
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+
+    const updatePlaceholder = () => {
+      if (!isDeleting) {
+            if (charIndex < currentWord.length) {
+          setPlaceholder((prev) => prev + currentWord[charIndex]);
+          setCharIndex((prev) => prev + 1);
+        } else {
+          setTimeout(() => setIsDeleting(true), 1000); 
+        }
+      } else {
+       
+        if (charIndex > 0) {
+          setPlaceholder((prev) => prev.slice(0, -1));
+          setCharIndex((prev) => prev - 1);
+        } else {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length); 
+        }
+      }
+    };
+
+    const typingSpeed = isDeleting ? 50 : 100; 
+    const timer = setTimeout(updatePlaceholder, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, wordIndex]); 
+
+  if (loading) return <h3 className="loading"><img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="" /></h3>;
+  if (error) return <h3>Xəta baş verdi: {error}</h3>;
 
   return (
     <main>
@@ -87,35 +126,38 @@ const Body = () => {
         </div>
       </section>
       <section className="second">
-        <h1>Food Galery</h1>
+        <h1>Food Gallery</h1>
+        <div className="btn-inp ">
+        <input className="ip" type="text" placeholder={placeholder} />
+        <Link href={"/search"}><IoSearchCircle className="serchIcn" /></Link>
+        </div>
         <div className="secondSecContainer">
           <div className="cards">
-            {data &&
-              data.map((item) => (
-                <div className="card" key={item.id}>
-                  <div className="image">
-                    <img src={item.image} alt="item image" />
-                  </div>
-                  <div className="content">
-                    <span>
-                      <Link href={`/detail/${item.id}`}>
-                        <h3>{item.category}</h3>
-                      </Link>
-                    </span>
-                    <p>Price: {item.price}$</p>
-                  </div>
-                  <div className="icons">
-                    <SlBasket
-                      className="basket"
-                      onClick={() => carBasket(item)}
-                    />
-                    <FaRegHeart
-                      className="heart"
-                      onClick={() => cartwish(item)}
-                    />
-                  </div>
+            {data.map((item) => (
+              <div className="card" key={item.id}>
+                <div className="image">
+                  <img src={item.image} alt="item image" />
                 </div>
-              ))}
+                <div className="content">
+                  <span>
+                    <Link href={`/detail/${item.id}`}>
+                      <h3>{item.category}</h3>
+                    </Link>
+                  </span>
+                  <p>Price: {item.price}$</p>
+                </div>
+                <div className="icons">
+                  <SlBasket
+                    className="basket"
+                    onClick={() => carBasket(item)}
+                  />
+                  <FaRegHeart
+                    className="heart"
+                    onClick={() => cartwish(item)}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

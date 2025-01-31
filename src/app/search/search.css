@@ -1,0 +1,90 @@
+.search-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .sorting-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .sorting-options button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .sorting-options button:hover {
+    background-color: #0056b3;
+  }
+  
+  .search-box {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-box input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.3s;
+    
+  }
+  
+  .product-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+  
+  .product-card h4 {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+  
+  .product-card h2 {
+    font-size: 16px;
+    color: #28a745;
+  }
+  
+  .badge {
+    display: block;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 3px;
+    margin-top: 5px;
+  }
+  
+  .badge.new {
+    background-color: #ff9800;
+    color: white;
+  }
+  
+  .badge.stock {
+    background-color: #dc3545;
+    color: white;
+  }
+  
