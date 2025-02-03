@@ -94,6 +94,22 @@ header {
         }
     }
 }
+.cart-icon {
+  position: relative;
+  font-size: 24px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 14px;
+}
+
 
 @media (max-width: 1050px) {
     nav {
@@ -106,54 +122,3 @@ header {
     }
 }
 
-/* @media (max-width: 768px) {
-    .headCountainer {
-        width: 100%;
-    }
-
-    nav ul {
-        display: none; 
-        flex-direction: column;
-        width: 100%;
-        background-color: #fff;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 20px 0;
-        text-align: center;
-    }
-
-    nav ul li {
-        width: 100%;
-        margin: 10px 0;
-        background-color: #bb3a33;
-        transition: background-color 0.3s;
-    }
-
-    nav ul li a {
-        color: white;
-    }
-
-    nav ul li:hover {
-        background-color: #a72c2c;
-    }
-
-    .fa {
-        display: block; 
-        position: absolute;
-        top: 50%;
-        left: 20px;
-        transform: translateY(-50%);
-        font-size: 25px;
-    }
-
- 
-    .logo img {
-        width: 100px;
-    }
-
- 
-    nav.active ul {
-        display: flex;
-    }
-} */

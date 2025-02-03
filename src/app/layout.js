@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import  CartProvider  from "@/context/CartContext";
 
 
 const geistSans = Geist({
@@ -23,11 +24,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body >
+      <body>
         <Header />
-        {children}
+        <CartProvider>
+          {children}
+
+        </CartProvider>
         <Footer />
       </body>
-    </html >
+    </html>
   );
 }

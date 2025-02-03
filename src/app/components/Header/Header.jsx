@@ -3,8 +3,11 @@ import { SlBasket } from "react-icons/sl";
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
+import { useCart } from "@/context/CartContext";
+
 
 const Header = () => {
+  const { cartItems } = useCart();
   return (
     <header>
       <div className="headCountainer">
@@ -20,9 +23,9 @@ const Header = () => {
 
         <nav>
           <ul>
-           <Link href={"/"}>  <li className="home">
-              <a href="">Home</a>
-            </li></Link>
+            <Link href={"/"}>
+              <li className="home">Home</li>
+            </Link>
             <li>
               <a href="">About</a>
             </li>
@@ -46,6 +49,9 @@ const Header = () => {
           </Link>
           <Link href={"/basket"}>
             <SlBasket className="ri" />
+            {cartItems.length > 0 && (
+              <span className="cart-count">{cartItems.length}</span>
+            )}
           </Link>
         </div>
       </div>
