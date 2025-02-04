@@ -1,90 +1,155 @@
+
 .search-container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .sorting-options {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .sorting-options button {
-    padding: 10px 15px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-  }
-  
-  .sorting-options button:hover {
-    background-color: #0056b3;
-  }
-  
-  .search-box {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .search-box input {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-  
-  .product-card {
-    border: 1px solid #ddd;
-    padding: 15px;
-    text-align: center;
-    border-radius: 10px;
-    transition: 0.3s;
-    
-  }
-  
-  .product-card img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-  }
-  
-  .product-card h4 {
-    font-size: 14px;
-    margin: 10px 0;
-  }
-  
-  .product-card h2 {
-    font-size: 16px;
-    color: #28a745;
-  }
-  
-  .badge {
-    display: block;
-    padding: 5px;
-    font-size: 12px;
-    border-radius: 3px;
-    margin-top: 5px;
-  }
-  
-  .badge.new {
-    background-color: #ff9800;
-    color: white;
-  }
-  
-  .badge.stock {
-    background-color: #dc3545;
-    color: white;
-  }
-  
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+
+.sorting-options {
+  position: relative;
+  background-color: #f8f1e4; 
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #e0c097; 
+  width: 250px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+}
+
+.sorting-options:hover {
+  background-color: #e6d8b9; 
+}
+
+.sorting-options h4 {
+  margin: 0;
+  font-weight: 600;
+  color: #6e4a3a; 
+}
+
+
+.sorting-options .options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #e0c097;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  margin-top: 5px;
+}
+
+.sorting-options .options button {
+  background-color: #fff;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  color: #6e4a3a; 
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sorting-options .options button:hover {
+  background-color: #e6d8b9; 
+  color: #4a2a1a; 
+}
+
+
+.sorting-options.active .options {
+  display: block;
+}
+
+
+.search-box input {
+  width: 250px;
+  padding: 12px;
+  margin-top: 20px;
+  border: 1px solid #e0c097;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #6e4a3a;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.search-box input:focus {
+  border: 1px solid #4a2a1a;
+}
+
+
+.cardss {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 30px;
+
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+justify-content: space-between;
+  gap: 10px;
+  background-color: #fff;
+  border: 1px solid #e0c097;
+  border-radius: 8px;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.cards:hover {
+  transform: scale(1.05);
+}
+
+.cards .images img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.cards .contents {
+  margin-top: 10px;
+}
+
+.cards .contents h3 {
+  color: #6e4a3a; 
+  font-weight: 600;
+}
+
+.cards .contents p {
+  color: #4a2a1a; 
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.iconss {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 18px;
+  color: #6e4a3a;
+}
+
+.iconss .basket, .iconss .heart {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.iconss .basket:hover, .iconss .heart:hover {
+  color: #4a2a1a;
+}

@@ -1,157 +1,162 @@
-.basket-section ul {
-    height: 21px;
-    width: 87%;
-    display: flex;
-    padding-left: 0;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
+
 
 .basket-section {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #faf3e0;
 }
 
-.breadcrumb {
-    list-style: none;
-    display: flex;
-    gap: 5px;
-    margin-bottom: 20px;
-}
-
-.breadcrumb li a {
-    color: #95979c;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-.breadcrumb li a:hover {
-    color: #232d40;
-}
 
 .cart-container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: space-between;
+  gap: 20px;
 }
 
+
 .cart-items {
-    width: 65%;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: white;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+  width: 70%;
+  background-color: #f4e1c1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cart-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    background-color: #f9f9f9;
+  display: flex;
+  margin-bottom: 20px;
+  background-color: #fff8e1;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cart-item-image {
-    width: 100px;
-    height: auto;
-    object-fit: contain;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 15px;
 }
 
 .cart-item-info {
-    flex: 1;
-    margin-left: 15px;
+  flex: 1;
 }
 
 .cart-item-info h4 {
-    font-size: 16px;
-    color: #232d40;
-    margin-bottom: 5px;
+  margin: 0;
+  color: #4e3b31;
 }
 
 .cart-item-info p {
-    font-size: 16px;
-    font-weight: bold;
-    color: #232d40;
+  color: #6f4f28;
+  margin: 5px 0;
 }
 
 .cart-item-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .quantity-controls {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  gap: 10px;
 }
 
 .quantity-controls button {
-    padding: 5px 10px;
-    background-color: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #bfa57b;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #9e8b66;
 }
 
 .delete-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
+  background-color: #d47956;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
+.delete-btn:hover {
+  background-color: #c25b43;
+}
+
+
 .cart-summary {
-    width: 30%;
-    border: 1px solid #27ae60;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: white;
+  width: 30%;
+  background-color: #fff8e1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cart-summary h3 {
-    font-size: 18px;
-    color: #232d40;
-    margin-bottom: 20px;
+  color: #4e3b31;
+  margin-bottom: 10px;
 }
 
-.summary-details {
-    font-size: 14px;
-    color: #232d40;
+.summary-details p {
+  color: #6f4f28;
+  margin: 5px 0;
+}
+
+.summary-details strong {
+  color: #4e3b31;
 }
 
 .checkout-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
+  background-color: #6f4f28;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
 }
 
 .checkout-btn:hover {
-    background-color: #219653;
+  background-color: #5d4021;
 }
 
 .deleted-items-section {
-    margin-top: 20px;
-    text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .restore-btn {
-    padding: 10px;
-    background-color: #f1c40f;
-    color: #232d40;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #bfa57b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .restore-btn:hover {
-    background-color: #f39c12;
+  background-color: #9e8b66;
+}
+
+.cart-items p {
+  text-align: center;
+  font-size: 18px;
+  color: #4e3b31;
+  font-weight: bold;
 }

@@ -8,8 +8,6 @@ import { FaRegHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { IoSearchCircle } from "react-icons/io5";
 
-
-
 const Body = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,32 +15,35 @@ const Body = () => {
   const [wish, setWish] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
- 
-  const words = ["Coat", "TV", "Card", "Ring", "Earering","T-shirt"];
+  const words = ["Coat", "TV", "Card", "Ring", "Earering", "T-shirt"];
   const [placeholder, setPlaceholder] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
+
   const carBasket = (product) => {
-    const addtobasket = cartItems.some((item) => item.id === product.id);
-    if (!addtobasket) {
-      const updatebasket = [...cartItems, product];
-      localStorage.setItem("basket", JSON.stringify(updatebasket));
-      setCartItems(updatebasket);
-      alert(`${product.title} baskete əlavə olundu`);
+    const isInBasket = cartItems.some((item) => item.id === product.id);
+    if (!isInBasket) {
+      const updatedBasket = [...cartItems, product];
+      localStorage.setItem("basket", JSON.stringify(updatedBasket));
+      setCartItems(updatedBasket);
+      window.dispatchEvent(new Event("storage"));
+      alert(`${product.title} basketə əlavə olundu`);
     } else {
       alert(`${product.title} artıq basketdə mövcuddur`);
     }
   };
 
+ 
   const cartwish = (product) => {
-    const addtowish = wish.some((item) => item.id === product.id);
-    if (!addtowish) {
-      const updatewish = [...wish, product];
-      localStorage.setItem("wishlist", JSON.stringify(updatewish));
-      setWish(updatewish);
-      alert(`${product.title} wishliste əlavə olundu`);
+    const isInWishlist = wish.some((item) => item.id === product.id);
+    if (!isInWishlist) {
+      const updatedWishlist = [...wish, product];
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+      setWish(updatedWishlist);
+      window.dispatchEvent(new Event("storage"));
+      alert(`${product.title} wishlistə əlavə olundu`);
     } else {
       alert(`${product.title} artıq wishlistdə mövcuddur`);
     }
@@ -61,9 +62,11 @@ const Body = () => {
       }
     };
 
-  
-    const result = JSON.parse(localStorage.getItem("basket")) || [];
-    setCartItems(result);
+ 
+    const storedBasket = JSON.parse(localStorage.getItem("basket")) || [];
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setCartItems(storedBasket);
+    setWish(storedWishlist);
 
     getApi();
   }, []);
@@ -73,36 +76,42 @@ const Body = () => {
 
     const updatePlaceholder = () => {
       if (!isDeleting) {
-            if (charIndex < currentWord.length) {
+        if (charIndex < currentWord.length) {
           setPlaceholder((prev) => prev + currentWord[charIndex]);
           setCharIndex((prev) => prev + 1);
         } else {
-          setTimeout(() => setIsDeleting(true), 1000); 
+          setTimeout(() => setIsDeleting(true), 1000);
         }
       } else {
-       
         if (charIndex > 0) {
           setPlaceholder((prev) => prev.slice(0, -1));
           setCharIndex((prev) => prev - 1);
         } else {
           setIsDeleting(false);
-          setWordIndex((prev) => (prev + 1) % words.length); 
+          setWordIndex((prev) => (prev + 1) % words.length);
         }
       }
     };
 
-    const typingSpeed = isDeleting ? 50 : 100; 
+    const typingSpeed = isDeleting ? 50 : 100;
     const timer = setTimeout(updatePlaceholder, typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [charIndex, isDeleting, wordIndex]); 
+  }, [charIndex, isDeleting, wordIndex]);
 
-  if (loading) return <h3 className="loading"><img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="" /></h3>;
+  if (loading)
+    return (
+      <h3 className="loading">
+        <img
+          src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+          alt=""
+        />
+      </h3>
+    );
   if (error) return <h3>Xəta baş verdi: {error}</h3>;
 
   return (
     <>
-     
       <main>
         <section className="first">
           <div className="firstSecContainer">
@@ -118,12 +127,7 @@ const Body = () => {
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt
                 voluptatibus iure veniam distinctio labore! Nihil, asperiores
                 aliquid facere, laboriosam ipsa rem cupiditate iure aspernatur
-                eligendi vero consequuntur architecto voluptatum! Voluptatum
-                natus, aliquid hic error ipsum laudantium! Cumque molestias
-                temporibus ut voluptatibus. Mollitia sint dolor illo in tenetur,
-                cumque sunt ducimus temporibus odio aliquam aut repellat labore
-                accusamus omnis repudiandae maiores laudantium ab ipsum pariatur
-                numquam id! Assumenda esse id asperiores.
+                eligendi vero consequuntur architecto voluptatum!
               </p>
             </div>
           </div>
@@ -137,7 +141,7 @@ const Body = () => {
             </Link>
           </div>
           <div className="secondSecContainer">
-            <div className="cards">
+            <div className="cardsb">
               {data.map((item) => (
                 <div className="card" key={item.id}>
                   <div className="image">

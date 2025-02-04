@@ -1,4 +1,4 @@
-.cards {
+.cards-w {
   padding-bottom: 30px;
   width: 70%;
   margin: 0 auto;
@@ -7,7 +7,7 @@
   gap: 20px;
   justify-content: space-evenly;
 
-  .card {
+  .card-w {
     width: 250px;
     display: flex;
     flex-direction: column;
@@ -47,7 +47,7 @@
     }
   }
 }
-.icons {
+.icons-w {
   display: flex;
   gap: 5px;
   position: absolute;

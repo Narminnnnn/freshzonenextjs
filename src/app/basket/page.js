@@ -1,9 +1,7 @@
 "use client";
-import "./basket.css"
+import "./basket.css";
 import { useEffect, useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
-
 
 const Page = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -27,6 +25,9 @@ const Page = () => {
       "deletedItems",
       JSON.stringify([...deletedItems, itemToDelete])
     );
+
+   
+    window.dispatchEvent(new Event("storage"));
   };
 
   const updateQuantity = (id, quantity) => {
@@ -40,29 +41,29 @@ const Page = () => {
       return item;
     });
     setCartItems(updatedItems);
-    localStorage.setItem("cart", JSON.stringify(updatedItems));
+    localStorage.setItem("basket", JSON.stringify(updatedItems));
   };
 
   const restoreDeletedItems = () => {
     setCartItems([...cartItems, ...deletedItems]);
     setDeletedItems([]);
     localStorage.setItem(
-      "cart",
+      "basket",
       JSON.stringify([...cartItems, ...deletedItems])
     );
     localStorage.setItem("deletedItems", JSON.stringify([]));
   };
 
   const totalPrice = cartItems.reduce((total, item) => {
-    const itemPrice = Number(item.price) || 0; 
-    const itemQuantity = Number(item.quantity) || 1; 
+    const itemPrice = Number(item.price) || 0;
+    const itemQuantity = Number(item.quantity) || 1;
     return total + itemPrice * itemQuantity;
   }, 0);
 
   return (
     <div>
       <section className="basket-section">
-             <div className="cart-container">
+        <div className="cart-container">
           <div className="cart-items">
             {cartItems.length > 0 ? (
               cartItems.map((item) => (
@@ -112,13 +113,8 @@ const Page = () => {
             <button className="checkout-btn">Sifarişi rəsmiləşdir</button>
           </div>
         </div>
-        {deletedItems.length > 0 && (
-          <div className="deleted-items-section">
-            <button onClick={restoreDeletedItems} className="restore-btn">
-              {deletedItems.length} məhsul silinib. Geri qaytar.
-            </button>
-          </div>
-        )}
+
+       
       </section>
     </div>
   );

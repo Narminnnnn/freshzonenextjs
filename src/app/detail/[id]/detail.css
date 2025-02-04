@@ -1,78 +1,89 @@
-/* Main container styling */
 .detailContainer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Product image container */
-.productImage {
-  flex: 1;
-  max-width: 400px;
-  text-align: center;
 }
 
 .productImage img {
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
+  height: auto;
   border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Product information container */
 .productInfo {
-  flex: 2;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+  margin-left: 20px;
+  max-width: 500px;
 }
 
 .productInfo .title {
-  font-size: 24px;
+  font-size: 2rem;
   font-weight: bold;
   color: #333;
 }
 
 .productInfo .price {
-  font-size: 20px;
-  font-weight: bold;
-  color: #4caf50;
+  font-size: 1.5rem;
+  color: #2d7b6e;
+  margin-top: 10px;
 }
 
 .productInfo .raiting {
-  font-size: 16px;
-  color: #ffa41b;
+  font-size: 1rem;
+  color: #999;
+  margin-top: 5px;
 }
 
-/* Description styling */
 .description {
-  flex: 1 100%;
   margin-top: 20px;
 }
 
 .description p {
-  font-size: 16px;
+  font-size: 1rem;
   color: #555;
   line-height: 1.6;
-  text-align: justify;
 }
 
-/* Responsive design for smaller screens */
+.iconsd {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.iconsd .basketd,
+.iconsd .heartd {
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.iconsd .basketd:hover {
+  transform: scale(1.1);
+  color: #2d7b6e;
+}
+.iconsd .heartd:hover {
+  transform: scale(1.1);
+  color: red;
+}
+
+.detailContainer {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
   .detailContainer {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
   }
 
-  .productImage img {
-    max-width: 100%;
+  .productInfo {
+    margin-left: 0;
+    margin-top: 20px;
   }
 }

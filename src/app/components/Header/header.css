@@ -26,7 +26,7 @@ header {
         display: flex;
         padding: 5px 10px;
         gap: 30px;
-        /* background-color: green; */
+    
         margin: 20px;
     }
     .burger{
@@ -35,11 +35,11 @@ header {
     }
 
     nav {
-        /* background-color: red; */
+       
 
         ul {
             display: flex;
-            justify-content: space-between;
+         justify-content: center;
             width: 500px;
             align-items: center;
             position: relative;
@@ -108,6 +108,57 @@ header {
   border-radius: 50%;
   padding: 5px;
   font-size: 14px;
+}
+.icns {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #f8f8f8;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.icon-container:hover {
+  background-color: #e0e0e0;
+}
+
+.fa,
+.ri {
+  font-size: 20px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.icon-container:hover .fa,
+.icon-container:hover .ri {
+  color: #ff6347; 
+}
+
+.count-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: orange;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 

@@ -1,0 +1,17 @@
+div {
+ margin: 0 auto;
+  text-align: center;
+  background-color: transparent; 
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+
+img {
+  width: 100%; 
+  height: auto;
+}

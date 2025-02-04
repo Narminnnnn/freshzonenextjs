@@ -1,13 +1,32 @@
+"use client";
 import "./header.css";
 import { SlBasket } from "react-icons/sl";
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
-import { useCart } from "@/context/CartContext";
+import { useEffect, useState } from "react";
 
 
 const Header = () => {
-  const { cartItems } = useCart();
+  const [wishlistCount, setWishlistCount] = useState(0);
+  const [basketCount, setBasketCount] = useState(0);
+ useEffect(() => {
+   const updateCounts = () => {
+     setWishlistCount(
+       JSON.parse(localStorage.getItem("wishlist"))?.length || 0
+     );
+     setBasketCount(JSON.parse(localStorage.getItem("basket"))?.length || 0);
+   };
+
+   updateCounts();
+
+   window.addEventListener("storage", updateCounts);
+
+   return () => {
+     window.removeEventListener("storage", updateCounts);
+   };
+ }, []);
+
   return (
     <header>
       <div className="headCountainer">
@@ -26,32 +45,33 @@ const Header = () => {
             <Link href={"/"}>
               <li className="home">Home</li>
             </Link>
-            <li>
-              <a href="">About</a>
-            </li>
-            <li>
-              <a href="">Galery</a>
-            </li>
-            <li>
-              <a href="">Blog</a>
-            </li>
-            <li>
-              <a href="">Contact</a>
-            </li>
+            <Link href={"/about"}>
+              {" "}
+              <li>About</li>
+            </Link>
+         
           </ul>
         </nav>
         <div className="burger">
           <IoMenu />
         </div>
         <div className="icns">
-          <Link href={"/wishlist"}>
-            <FaRegHeart className="fa" />
+          <Link href="/wishlist">
+            <div className="icon-container">
+              <FaRegHeart className="fa" />
+              {wishlistCount > 0 && (
+                <span className="count-badge">{wishlistCount}</span>
+              )}
+            </div>
           </Link>
-          <Link href={"/basket"}>
-            <SlBasket className="ri" />
-            {cartItems.length > 0 && (
-              <span className="cart-count">{cartItems.length}</span>
-            )}
+
+          <Link href="/basket">
+            <div className="icon-container">
+              <SlBasket className="ri" />
+              {basketCount > 0 && (
+                <span className="count-badge">{basketCount}</span>
+              )}
+            </div>
           </Link>
         </div>
       </div>
